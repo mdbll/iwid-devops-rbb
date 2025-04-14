@@ -33,17 +33,28 @@
       "UnauthRoleName": "amplify-iwiddevopsrbb-ryan-3b78f-unauthRole",
       "StackName": "amplify-iwiddevopsrbb-ryan-3b78f",
       "StackId": "arn:aws:cloudformation:eu-west-1:267580591819:stack/amplify-iwiddevopsrbb-ryan-3b78f/4574c2e0-190b-11f0-b8aa-0a1ee5799551",
-      "AmplifyAppId": "d1h9zidn9yly88"
+      "AmplifyAppId": "d1h9zidn9yly88",
+      "APIGatewayAuthURL": "https://s3.amazonaws.com/amplify-iwiddevopsrbb-ryan-3b78f-deployment/amplify-cfn-templates/api/APIGatewayAuthStack.json"
     },
     "categories": {
       "function": {
-        "iwiddevopsrbba3c46e55": {
+        "getUser": {
           "deploymentBucketName": "amplify-iwiddevopsrbb-ryan-3b78f-deployment",
-          "s3Key": "amplify-builds/iwiddevopsrbba3c46e55-5431394c75506e547864-build.zip"
+          "s3Key": "amplify-builds/getUser-33716333774444644256-build.zip"
+        },
+        "insertUser": {
+          "deploymentBucketName": "amplify-iwiddevopsrbb-ryan-3b78f-deployment",
+          "s3Key": "amplify-builds/insertUser-5944375a2f47476e536b-build.zip"
         }
       },
       "storage": {
         "users": {}
+      },
+      "api": {
+        "auth": {}
+      },
+      "auth": {
+        "iwiddevopsrbb281722aa": {}
       }
     }
   }

@@ -47,12 +47,12 @@
         "FunctionName": {
           "Fn::If": [
             "ShouldNotCreateEnvResources",
-            "iwiddevopsrbba3c46e55",
+            "getUser",
             {
               "Fn::Join": [
                 "",
                 [
-                  "iwiddevopsrbba3c46e55",
+                  "getUser",
                   "-",
                   {
                     "Ref": "env"
@@ -89,12 +89,12 @@
         "RoleName": {
           "Fn::If": [
             "ShouldNotCreateEnvResources",
-            "iwiddevopsrbbLambdaRolea79981ac",
+            "iwiddevopsrbbLambdaRoleaf60385c",
             {
               "Fn::Join": [
                 "",
                 [
-                  "iwiddevopsrbbLambdaRolea79981ac",
+                  "iwiddevopsrbbLambdaRoleaf60385c",
                   "-",
                   {
                     "Ref": "env"
