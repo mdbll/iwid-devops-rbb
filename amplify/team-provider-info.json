@@ -13,7 +13,13 @@
     },
     "categories": {
       "function": {
-        "iwiddevopsrbba3c46e55": {}
+        "iwiddevopsrbba3c46e55": {
+          "deploymentBucketName": "amplify-iwiddevopsrbb-dev-cc064-deployment",
+          "s3Key": "amplify-builds/iwiddevopsrbba3c46e55-5431394c75506e547864-build.zip"
+        }
+      },
+      "storage": {
+        "users": {}
       }
     }
   },
@@ -33,8 +39,11 @@
       "function": {
         "iwiddevopsrbba3c46e55": {
           "deploymentBucketName": "amplify-iwiddevopsrbb-ryan-3b78f-deployment",
-          "s3Key": "amplify-builds/iwiddevopsrbba3c46e55-436f47367a514a363479-build.zip"
+          "s3Key": "amplify-builds/iwiddevopsrbba3c46e55-5431394c75506e547864-build.zip"
         }
+      },
+      "storage": {
+        "users": {}
       }
     }
   }
