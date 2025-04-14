@@ -1,1 +1,27 @@
-{}
+{
+  "function": {
+    "iwiddevopsrbba3c46e55": {
+      "build": true,
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda"
+    }
+  },
+  "parameters": {
+    "AMPLIFY_function_iwiddevopsrbba3c46e55_deploymentBucketName": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "iwiddevopsrbba3c46e55"
+        }
+      ]
+    },
+    "AMPLIFY_function_iwiddevopsrbba3c46e55_s3Key": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "iwiddevopsrbba3c46e55"
+        }
+      ]
+    }
+  }
+}
