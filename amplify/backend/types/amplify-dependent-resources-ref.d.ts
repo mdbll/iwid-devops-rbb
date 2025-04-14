@@ -7,6 +7,7 @@ export type AmplifyDependentResourcesAttributes = {
       "Name": "string",
       "Region": "string"
     }
+<<<<<<< HEAD
   },
   "storage": {
     "users": {
@@ -17,5 +18,7 @@ export type AmplifyDependentResourcesAttributes = {
       "Region": "string",
       "StreamArn": "string"
     }
+=======
+>>>>>>> 2dc45fd1 (add function)
   }
 }
