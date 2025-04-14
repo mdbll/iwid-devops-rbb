@@ -10,6 +10,11 @@
       "StackName": "amplify-iwiddevopsrbb-dev-cc064",
       "StackId": "arn:aws:cloudformation:eu-west-1:267580591819:stack/amplify-iwiddevopsrbb-dev-cc064/796975c0-1909-11f0-84f6-060d03cc2861",
       "AmplifyAppId": "d1h9zidn9yly88"
+    },
+    "categories": {
+      "function": {
+        "iwiddevopsrbba3c46e55": {}
+      }
     }
   },
   "ryan": {
