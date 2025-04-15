@@ -26,7 +26,17 @@
   "auth": {
     "iwiddevopsrbb281722aa": {
       "customAuth": false,
-      "dependsOn": [],
+      "dependsOn": [
+        {
+          "attributes": [
+            "Arn",
+            "Name"
+          ],
+          "category": "function",
+          "resourceName": "iwiddevopsrbb281722aaPostConfirmation",
+          "triggerProvider": "Cognito"
+        }
+      ],
       "frontendAuthConfig": {
         "mfaConfiguration": "OFF",
         "mfaTypes": [
@@ -42,7 +52,7 @@
         "socialProviders": [],
         "usernameAttributes": [],
         "verificationMechanisms": [
-          "EMAIL"
+          "PHONE_NUMBER"
         ]
       },
       "providerPlugin": "awscloudformation",
@@ -60,40 +70,11 @@
       "build": true,
       "providerPlugin": "awscloudformation",
       "service": "Lambda"
-    }
-  },
-  "parameters": {
-    "AMPLIFY_function_getUser_deploymentBucketName": {
-      "usedBy": [
-        {
-          "category": "function",
-          "resourceName": "getUser"
-        }
-      ]
     },
-    "AMPLIFY_function_getUser_s3Key": {
-      "usedBy": [
-        {
-          "category": "function",
-          "resourceName": "getUser"
-        }
-      ]
-    },
-    "AMPLIFY_function_insertUser_deploymentBucketName": {
-      "usedBy": [
-        {
-          "category": "function",
-          "resourceName": "insertUser"
-        }
-      ]
-    },
-    "AMPLIFY_function_insertUser_s3Key": {
-      "usedBy": [
-        {
-          "category": "function",
-          "resourceName": "insertUser"
-        }
-      ]
+    "iwiddevopsrbb281722aaPostConfirmation": {
+      "build": true,
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda"
     }
   },
   "storage": {

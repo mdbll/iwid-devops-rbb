@@ -1,16 +1,27 @@
 <template>
-  <h1>First Step</h1>
+  <h1>Sign up - First Step</h1>
   <form @submit="onSubmit" class="form">
-    <input v-model="username.value" :ref="username.ref" class="input" />
+    <input
+      v-model="username.value"
+      :ref="username.ref"
+      class="input"
+      placeholder="Username"
+    />
     <p v-if="username.error">{{ username.error.message }}</p>
     <input
       v-model="password.value"
       :ref="password.ref"
       type="password"
       class="input"
+      placeholder="Password"
     />
     <p v-if="password.error">{{ password.error.message }}</p>
-    <input v-model="email.value" :ref="email.ref" class="input" />
+    <input
+      v-model="email.value"
+      :ref="email.ref"
+      class="input"
+      placeholder="E-mail"
+    />
     <p v-if="email.error">{{ email.error.message }}</p>
     <button type="submit">submit</button>
   </form>

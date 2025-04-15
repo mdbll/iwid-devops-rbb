@@ -1,10 +1,11 @@
 <template>
-  <h1>Second Step</h1>
+  <h1>Sign up - Second Step</h1>
   <form @submit="onSubmit" class="form">
     <input
       v-model="confirmationCode.value"
       :ref="confirmationCode.ref"
       class="input"
+      placeholder="Confirmation code"
     />
     <p v-if="confirmationCode.error">{{ confirmationCode.error.message }}</p>
     <button type="submit">submit</button>
@@ -14,6 +15,7 @@
 <script>
 import { useForm } from "vue-hooks-form";
 import handleSignUpConfirmation from "../functions/auth/SignUpSecondStep";
+import router from "@/router";
 
 export default {
   setup() {
@@ -28,7 +30,8 @@ export default {
     });
     const onSubmit = async (data) => {
       console.log(data);
-      await handleSignUpConfirmation(data);
+      const isSignUpComplete = await handleSignUpConfirmation(data);
+      if (isSignUpComplete) router.push({ path: "/user" });
     };
     return {
       confirmationCode,
@@ -41,11 +44,12 @@ export default {
 <style>
 .input {
   padding: 0.25rem 0.5rem;
+  border-radius: 0.5rem;
 }
 
 .form {
   display: flex;
   flex-direction: column;
-  gap: 1;
+  gap: 0.5rem;
 }
 </style>
