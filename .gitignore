@@ -23,6 +23,7 @@ yarn-debug.log*
 yarn-error.log*
 
 venv
+amplify/team-provider-info.json
 
 #amplify-do-not-edit-begin
 amplify/\#current-cloud-backend
@@ -44,9 +45,4 @@ amplify-gradle-config.json
 amplifytools.xcconfig
 .secret-*
 **.sample
-amplify/team-provider-info.json
-team-provider-info.json
-amplify/team-provider-info.json
 #amplify-do-not-edit-end
-
-venv
