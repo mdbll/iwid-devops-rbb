@@ -11,9 +11,11 @@ import config from "./amplifyconfiguration.json";
 
 const app = createApp(App);
 
+const pinia = createPinia();
+
 Amplify.configure(config);
 
-app.use(createPinia());
+app.use(pinia);
 app.use(router);
 
 app.mount("#app");

@@ -1,3 +1,4 @@
+import { useSignUpStore } from "@/stores/signUpStore";
 import { signUp } from "@aws-amplify/auth";
 
 type SignUpParameters = {
@@ -24,7 +25,13 @@ const handleSignUp = async ({
     });
 
     console.log(userId, isSignUpComplete, nextStep);
-    return { userId, isSignUpComplete };
+    const userStore = useSignUpStore();
+    userStore.setUser({
+      userId,
+      isSignUpComplete,
+      nextStep: nextStep.signUpStep,
+      username,
+    });
   } catch (error) {
     console.log("error signing up:", error);
   }
