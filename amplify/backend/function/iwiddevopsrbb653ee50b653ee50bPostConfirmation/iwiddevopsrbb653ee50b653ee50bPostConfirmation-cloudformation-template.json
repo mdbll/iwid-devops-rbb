@@ -1,32 +1,52 @@
 {
   "AWSTemplateFormatVersion": "2010-09-09",
-  "Description": "{\"createdOn\":\"Windows\",\"createdBy\":\"Amplify\",\"createdWith\":\"13.0.0\",\"stackType\":\"function-Lambda\",\"metadata\":{\"whyContinueWithGen1\":\"\"}}",
+  "Description": "{\"createdOn\":\"Mac\",\"createdBy\":\"Amplify\",\"createdWith\":\"13.0.0\",\"stackType\":\"function-Lambda\",\"metadata\":{\"whyContinueWithGen1\":\"\"}}",
   "Parameters": {
-    "CloudWatchRule": {
+    "GROUP": {
       "Type": "String",
-      "Default": "NONE",
-      "Description": " Schedule Expression"
+      "Default": ""
     },
-    "deploymentBucketName": {
-      "Type": "String"
+    "modules": {
+      "Type": "String",
+      "Default": "",
+      "Description": "Comma-delimited list of modules to be executed by a lambda trigger. Sent to resource as an env variable."
+    },
+    "resourceName": {
+      "Type": "String",
+      "Default": ""
+    },
+    "trigger": {
+      "Type": "String",
+      "Default": "true"
+    },
+    "functionName": {
+      "Type": "String",
+      "Default": ""
+    },
+    "roleName": {
+      "Type": "String",
+      "Default": ""
+    },
+    "parentResource": {
+      "Type": "String",
+      "Default": ""
+    },
+    "parentStack": {
+      "Type": "String",
+      "Default": ""
     },
     "env": {
+      "Type": "String"
+    },
+    "deploymentBucketName": {
       "Type": "String"
     },
     "s3Key": {
       "Type": "String"
     },
-    "storageusersName": {
+    "functioninsertUserName": {
       "Type": "String",
-      "Default": "storageusersName"
-    },
-    "storageusersArn": {
-      "Type": "String",
-      "Default": "storageusersArn"
-    },
-    "storageusersStreamArn": {
-      "Type": "String",
-      "Default": "storageusersStreamArn"
+      "Default": "functioninsertUserName"
     }
   },
   "Conditions": {
@@ -47,24 +67,16 @@
         "aws:asset:property": "Code"
       },
       "Properties": {
-        "Code": {
-          "S3Bucket": {
-            "Ref": "deploymentBucketName"
-          },
-          "S3Key": {
-            "Ref": "s3Key"
-          }
-        },
         "Handler": "index.handler",
         "FunctionName": {
           "Fn::If": [
             "ShouldNotCreateEnvResources",
-            "insertUser",
+            "iwiddevopsrbb653ee50b653ee50bPostConfirmation",
             {
               "Fn::Join": [
                 "",
                 [
-                  "insertUser",
+                  "iwiddevopsrbb653ee50b653ee50bPostConfirmation",
                   "-",
                   {
                     "Ref": "env"
@@ -79,17 +91,17 @@
             "ENV": {
               "Ref": "env"
             },
+            "MODULES": {
+              "Ref": "modules"
+            },
             "REGION": {
               "Ref": "AWS::Region"
             },
-            "STORAGE_USERS_NAME": {
-              "Ref": "storageusersName"
+            "GROUP": {
+              "Ref": "GROUP"
             },
-            "STORAGE_USERS_ARN": {
-              "Ref": "storageusersArn"
-            },
-            "STORAGE_USERS_STREAMARN": {
-              "Ref": "storageusersStreamArn"
+            "FUNCTION_INSERTUSER_NAME": {
+              "Ref": "functioninsertUserName"
             }
           }
         },
@@ -99,9 +111,16 @@
             "Arn"
           ]
         },
-        "Runtime": "python3.10",
-        "Layers": [],
-        "Timeout": 25
+        "Runtime": "nodejs22.x",
+        "Timeout": 25,
+        "Code": {
+          "S3Bucket": {
+            "Ref": "deploymentBucketName"
+          },
+          "S3Key": {
+            "Ref": "s3Key"
+          }
+        }
       }
     },
     "LambdaExecutionRole": {
@@ -110,12 +129,12 @@
         "RoleName": {
           "Fn::If": [
             "ShouldNotCreateEnvResources",
-            "iwiddevopsrbbLambdaRole3f867ba1",
+            "iwiddevopsrbb653ee50b653ee50bPostConfirmation",
             {
               "Fn::Join": [
                 "",
                 [
-                  "iwiddevopsrbbLambdaRole3f867ba1",
+                  "iwiddevopsrbb653ee50b653ee50bPostConfirmation",
                   "-",
                   {
                     "Ref": "env"
@@ -204,23 +223,30 @@
             {
               "Effect": "Allow",
               "Action": [
-                "dynamodb:Put*",
-                "dynamodb:Create*",
-                "dynamodb:BatchWriteItem",
-                "dynamodb:PartiQLInsert"
+                "lambda:Create*",
+                "lambda:Put*",
+                "lambda:Add*",
+                "lambda:Get*",
+                "lambda:List*",
+                "lambda:Invoke*"
               ],
               "Resource": [
                 {
-                  "Ref": "storageusersArn"
-                },
-                {
                   "Fn::Join": [
-                    "/",
+                    "",
                     [
+                      "arn:aws:lambda:",
                       {
-                        "Ref": "storageusersArn"
+                        "Ref": "AWS::Region"
                       },
-                      "index/*"
+                      ":",
+                      {
+                        "Ref": "AWS::AccountId"
+                      },
+                      ":function:",
+                      {
+                        "Ref": "functioninsertUserName"
+                      }
                     ]
                   ]
                 }
@@ -245,11 +271,6 @@
         ]
       }
     },
-    "Region": {
-      "Value": {
-        "Ref": "AWS::Region"
-      }
-    },
     "LambdaExecutionRole": {
       "Value": {
         "Ref": "LambdaExecutionRole"
@@ -261,6 +282,11 @@
           "LambdaExecutionRole",
           "Arn"
         ]
+      }
+    },
+    "Region": {
+      "Value": {
+        "Ref": "AWS::Region"
       }
     }
   }

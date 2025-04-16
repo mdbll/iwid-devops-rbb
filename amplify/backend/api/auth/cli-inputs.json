@@ -4,11 +4,10 @@
     "/getUser": {
       "name": "/getUser",
       "lambdaFunction": "getUser",
+      "cors": true,
       "permissions": {
         "setting": "private",
-        "auth": [
-          "read"
-        ]
+        "auth": ["read"]
       }
     },
     "/insertUser": {
@@ -16,9 +15,7 @@
       "lambdaFunction": "insertUser",
       "permissions": {
         "setting": "private",
-        "auth": [
-          "create"
-        ]
+        "auth": ["create"]
       }
     }
   }

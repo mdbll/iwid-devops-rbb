@@ -1,17 +1,35 @@
 <template>
-  <h1>First Step</h1>
+  <h1>Sign up - First Step</h1>
   <form @submit="onSubmit" class="form">
-    <input v-model="username.value" :ref="username.ref" class="input" />
-    <p v-if="username.error">{{ username.error.message }}</p>
     <input
       v-model="password.value"
       :ref="password.ref"
       type="password"
       class="input"
+      placeholder="Password"
     />
     <p v-if="password.error">{{ password.error.message }}</p>
-    <input v-model="email.value" :ref="email.ref" class="input" />
+    <input
+      v-model="email.value"
+      :ref="email.ref"
+      class="input"
+      placeholder="E-mail"
+    />
     <p v-if="email.error">{{ email.error.message }}</p>
+    <input
+      v-model="firstname.value"
+      :ref="firstname.ref"
+      class="input"
+      placeholder="Firstname"
+    />
+    <p v-if="firstname.error">{{ firstname.error.message }}</p>
+    <input
+      v-model="familyName.value"
+      :ref="familyName.ref"
+      class="input"
+      placeholder="familyName"
+    />
+    <p v-if="familyName.error">{{ familyName.error.message }}</p>
     <button type="submit">submit</button>
   </form>
 </template>
@@ -25,10 +43,13 @@ export default {
     const { useField, handleSubmit } = useForm({
       defaultValues: {},
     });
-    const username = useField("username", {
+    const email = useField("email", {
       rule: { required: true },
     });
-    const email = useField("email", {
+    const firstname = useField("firstname", {
+      rule: { required: true },
+    });
+    const familyName = useField("familyName", {
       rule: { required: true },
     });
     const password = useField("password", {
@@ -43,8 +64,9 @@ export default {
       await handleSignUp(data);
     };
     return {
-      username,
       password,
+      firstname,
+      familyName,
       email,
       onSubmit: handleSubmit(onSubmit),
     };
