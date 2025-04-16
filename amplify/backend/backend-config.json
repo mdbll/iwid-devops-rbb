@@ -24,7 +24,7 @@
     }
   },
   "auth": {
-    "iwiddevopsrbb281722aa": {
+    "iwiddevopsrbb653ee50b653ee50b": {
       "customAuth": false,
       "dependsOn": [
         {
@@ -33,7 +33,7 @@
             "Name"
           ],
           "category": "function",
-          "resourceName": "iwiddevopsrbb281722aaPostConfirmation",
+          "resourceName": "iwiddevopsrbb653ee50b653ee50bPostConfirmation",
           "triggerProvider": "Cognito"
         }
       ],
@@ -47,12 +47,16 @@
           "passwordPolicyMinLength": 8
         },
         "signupAttributes": [
-          "EMAIL"
+          "EMAIL",
+          "FAMILY_NAME",
+          "NAME"
         ],
         "socialProviders": [],
-        "usernameAttributes": [],
+        "usernameAttributes": [
+          "EMAIL"
+        ],
         "verificationMechanisms": [
-          "PHONE_NUMBER"
+          "EMAIL"
         ]
       },
       "providerPlugin": "awscloudformation",
@@ -68,13 +72,83 @@
     },
     "insertUser": {
       "build": true,
+      "dependsOn": [
+        {
+          "attributes": [
+            "Name",
+            "Arn",
+            "StreamArn"
+          ],
+          "category": "storage",
+          "resourceName": "users"
+        }
+      ],
       "providerPlugin": "awscloudformation",
       "service": "Lambda"
     },
-    "iwiddevopsrbb281722aaPostConfirmation": {
+    "iwiddevopsrbb653ee50b653ee50bPostConfirmation": {
       "build": true,
+      "dependsOn": [
+        {
+          "attributes": [
+            "Name"
+          ],
+          "category": "function",
+          "resourceName": "insertUser"
+        }
+      ],
       "providerPlugin": "awscloudformation",
       "service": "Lambda"
+    }
+  },
+  "parameters": {
+    "AMPLIFY_function_getUser_deploymentBucketName": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "getUser"
+        }
+      ]
+    },
+    "AMPLIFY_function_getUser_s3Key": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "getUser"
+        }
+      ]
+    },
+    "AMPLIFY_function_insertUser_deploymentBucketName": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "insertUser"
+        }
+      ]
+    },
+    "AMPLIFY_function_insertUser_s3Key": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "insertUser"
+        }
+      ]
+    },
+    "AMPLIFY_function_iwiddevopsrbb653ee50b653ee50bPostConfirmation_deploymentBucketName": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "iwiddevopsrbb653ee50b653ee50bPostConfirmation"
+        }
+      ]
+    },
+    "AMPLIFY_function_iwiddevopsrbb653ee50b653ee50bPostConfirmation_s3Key": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "iwiddevopsrbb653ee50b653ee50bPostConfirmation"
+        }
+      ]
     }
   },
   "storage": {

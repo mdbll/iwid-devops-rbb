@@ -13,7 +13,6 @@ const handleSignIn = async ({ username, password }: SignInInput) => {
 
     const userStore = useSignUpStore();
     userStore.setUser({
-      userId: userId,
       isSignUpComplete: isSignedIn,
       nextStep: nextStep.signInStep,
       username,

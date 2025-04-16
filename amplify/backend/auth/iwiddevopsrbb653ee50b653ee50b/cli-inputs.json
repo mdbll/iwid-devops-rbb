@@ -1,10 +1,12 @@
 {
   "version": "1",
   "cognitoConfig": {
-    "resourceNameTruncated": "iwidde281722aa",
-    "userPoolName": "iwiddevopsrbb281722aa_userpool_281722aa",
+    "identityPoolName": "iwiddevopsrbb653ee50b653ee50b_identitypool_35fbae36",
+    "allowUnauthenticatedIdentities": false,
+    "resourceNameTruncated": "iwidde653ee50b",
+    "userPoolName": "iwiddevopsrbb653ee50b_userpool_653ee50b",
     "autoVerifiedAttributes": [
-      "phone_number"
+      "email"
     ],
     "mfaConfiguration": "OFF",
     "mfaTypes": [
@@ -18,7 +20,9 @@
     "passwordPolicyMinLength": 8,
     "passwordPolicyCharacters": [],
     "requiredAttributes": [
-      "email"
+      "email",
+      "family_name",
+      "name"
     ],
     "aliasAttributes": [],
     "userpoolClientGenerateSecret": false,
@@ -29,12 +33,23 @@
     "userpoolClientReadAttributes": [
       "email"
     ],
-    "userpoolClientLambdaRole": "iwidde281722aa_userpoolclient_lambda_role",
+    "userpoolClientLambdaRole": "iwidde653ee50b_userpoolclient_lambda_role",
     "userpoolClientSetAttributes": false,
-    "sharedId": "281722aa",
-    "resourceName": "iwiddevopsrbb281722aa",
-    "authSelections": "userPoolOnly",
+    "sharedId": "653ee50b",
+    "resourceName": "iwiddevopsrbb653ee50b653ee50b",
+    "authSelections": "identityPoolAndUserPool",
     "useDefault": "manual",
+    "usernameAttributes": [
+      "email"
+    ],
+    "userPoolGroups": false,
+    "adminQueries": false,
+    "triggers": {
+      "PostConfirmation": [
+        "custom"
+      ]
+    },
+    "hostedUI": false,
     "userPoolGroupList": [],
     "serviceName": "Cognito",
     "usernameCaseSensitive": false,
@@ -55,7 +70,7 @@
     "dependsOn": [
       {
         "category": "function",
-        "resourceName": "iwiddevopsrbb281722aaPostConfirmation",
+        "resourceName": "iwiddevopsrbb653ee50b653ee50bPostConfirmation",
         "triggerProvider": "Cognito",
         "attributes": [
           "Arn",
@@ -63,19 +78,9 @@
         ]
       }
     ],
-    "userPoolGroups": false,
-    "adminQueries": false,
-    "triggers": {
-      "PostConfirmation": [
-        "custom"
-      ]
-    },
-    "hostedUI": false,
-    "authProviders": [],
-    "parentStack": {
-      "Ref": "AWS::StackId"
-    },
-    "authTriggerConnections": "[\n  {\n    \"triggerType\": \"PostConfirmation\",\n    \"lambdaFunctionName\": \"iwiddevopsrbb281722aaPostConfirmation\"\n  }\n]",
-    "permissions": []
+    "permissions": [],
+    "authTriggerConnections": [
+      "{\"triggerType\":\"PostConfirmation\",\"lambdaFunctionName\":\"iwiddevopsrbb653ee50b653ee50bPostConfirmation\"}"
+    ]
   }
 }

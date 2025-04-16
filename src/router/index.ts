@@ -33,6 +33,7 @@ const router = createRouter({
 
 router.beforeEach(async (to, from) => {
   const { data } = useSignUpStore();
+
   if (!data?.isSignUpComplete && to.name === "user") {
     return { name: "home" };
   }
