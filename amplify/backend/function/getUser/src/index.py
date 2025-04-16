@@ -2,25 +2,22 @@ import os
 import boto3
 import json
 from dynamodb_json import json_util as dbjson
+from boto3.dynamodb.conditions import Key
 
 def handler(event, context):
+  print('Table name')
+  print(os.environ["STORAGE_USERS_NAME"])
+  
   dynamodb = boto3.resource('dynamodb')
   dbtable = dynamodb.Table(os.environ["STORAGE_USERS_NAME"])
-
-  print('received event:')
-  print(event)
-  
-  print('context')
-  print(context)
   
   try:
+    id = event.get("requestContext", {}).get("identity", {}).get("cognitoAuthenticationProvider", "").split(':')[-1]
     res = dbtable.query( 
-        IndexName='email',
-        KeyConditionExpression=Key('email').eq(event)
+        KeyConditionExpression=Key('id').eq(id)
         )
-    print(res)
-    item = res['Item']
-    print(item)
+    
+    item = res['Items'][0]
 
     return {
         'statusCode': 200,
