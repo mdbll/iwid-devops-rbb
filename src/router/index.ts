@@ -31,18 +31,31 @@ const router = createRouter({
   ],
 });
 
-router.beforeEach(async (to, from) => {
-  const { data } = useSignUpStore();
+router.beforeEach((to, from, next) => {
+  const lastAuthUser = localStorage.getItem(
+    'CognitoIdentityServiceProvider.3v0f1ivutc4vn1o87s9n9cf558.LastAuthUser'
+  );
 
-  if (!data?.isSignUpComplete && to.name === "user") {
-    return { name: "home" };
+  const accessTokenKey = `CognitoIdentityServiceProvider.3v0f1ivutc4vn1o87s9n9cf558.${lastAuthUser}.accessToken`;
+  const accessToken = localStorage.getItem(accessTokenKey);
+
+  const isAuthenticated = accessToken !== null;
+
+  if (to.name === 'user' && !isAuthenticated) {
+    return next({ name: 'signin' });
   }
-  if (
-    data?.isSignUpComplete &&
-    ["home", "signup", "signin"].includes((to.name ?? "home").toString())
-  ) {
-    return { name: "user" };
-  }
+
+  next(); 
+
+  // if (!data?.isSignUpComplete && to.name === "user") {
+  //   return { name: "home" };
+  // }
+  // if (
+  //   data?.isSignUpComplete &&
+  //   ["home", "signup", "signin"].includes((to.name ?? "home").toString())
+  // ) {
+  //   return { name: "user" };
+  // }
 });
 
 export default router;
