@@ -34,15 +34,15 @@ const router = createRouter({
 router.beforeEach(async (to, from) => {
   const { data } = useSignUpStore();
 
-  if (!data?.isSignUpComplete && to.name === "user") {
-    return { name: "home" };
-  }
-  if (
-    data?.isSignUpComplete &&
-    ["home", "signup", "signin"].includes((to.name ?? "home").toString())
-  ) {
-    return { name: "user" };
-  }
+  // if (!data?.isSignUpComplete && to.name === "user") {
+  //   return { name: "home" };
+  // }
+  // if (
+  //   data?.isSignUpComplete &&
+  //   ["home", "signup", "signin"].includes((to.name ?? "home").toString())
+  // ) {
+  //   return { name: "user" };
+  // }
 });
 
 export default router;
