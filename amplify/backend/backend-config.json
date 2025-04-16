@@ -17,6 +17,30 @@
           ],
           "category": "function",
           "resourceName": "insertUser"
+        },
+        {
+          "attributes": [
+            "Name",
+            "Arn"
+          ],
+          "category": "function",
+          "resourceName": "insertAddress"
+        },
+        {
+          "attributes": [
+            "Name",
+            "Arn"
+          ],
+          "category": "function",
+          "resourceName": "getAddresses"
+        },
+        {
+          "attributes": [
+            "Name",
+            "Arn"
+          ],
+          "category": "function",
+          "resourceName": "deleteAddress"
         }
       ],
       "providerPlugin": "awscloudformation",
@@ -64,6 +88,38 @@
     }
   },
   "function": {
+    "deleteAddress": {
+      "build": true,
+      "dependsOn": [
+        {
+          "attributes": [
+            "Name",
+            "Arn",
+            "StreamArn"
+          ],
+          "category": "storage",
+          "resourceName": "addresses"
+        }
+      ],
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda"
+    },
+    "getAddresses": {
+      "build": true,
+      "dependsOn": [
+        {
+          "attributes": [
+            "Name",
+            "Arn",
+            "StreamArn"
+          ],
+          "category": "storage",
+          "resourceName": "addresses"
+        }
+      ],
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda"
+    },
     "getUser": {
       "build": true,
       "dependsOn": [
@@ -75,6 +131,22 @@
           ],
           "category": "storage",
           "resourceName": "users"
+        }
+      ],
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda"
+    },
+    "insertAddress": {
+      "build": true,
+      "dependsOn": [
+        {
+          "attributes": [
+            "Name",
+            "Arn",
+            "StreamArn"
+          ],
+          "category": "storage",
+          "resourceName": "addresses"
         }
       ],
       "providerPlugin": "awscloudformation",
@@ -112,6 +184,38 @@
     }
   },
   "parameters": {
+    "AMPLIFY_function_deleteAddress_deploymentBucketName": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "deleteAddress"
+        }
+      ]
+    },
+    "AMPLIFY_function_deleteAddress_s3Key": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "deleteAddress"
+        }
+      ]
+    },
+    "AMPLIFY_function_getAddresses_deploymentBucketName": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "getAddresses"
+        }
+      ]
+    },
+    "AMPLIFY_function_getAddresses_s3Key": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "getAddresses"
+        }
+      ]
+    },
     "AMPLIFY_function_getUser_deploymentBucketName": {
       "usedBy": [
         {
@@ -125,6 +229,22 @@
         {
           "category": "function",
           "resourceName": "getUser"
+        }
+      ]
+    },
+    "AMPLIFY_function_insertAddress_deploymentBucketName": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "insertAddress"
+        }
+      ]
+    },
+    "AMPLIFY_function_insertAddress_s3Key": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "insertAddress"
         }
       ]
     },
@@ -162,6 +282,10 @@
     }
   },
   "storage": {
+    "addresses": {
+      "providerPlugin": "awscloudformation",
+      "service": "DynamoDB"
+    },
     "users": {
       "providerPlugin": "awscloudformation",
       "service": "DynamoDB"
