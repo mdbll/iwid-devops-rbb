@@ -24,9 +24,19 @@
     }
   },
   "auth": {
-    "iwiddevopsrbb281722aa": {
+    "iwiddevopsrbb653ee50b653ee50b": {
       "customAuth": false,
-      "dependsOn": [],
+      "dependsOn": [
+        {
+          "attributes": [
+            "Arn",
+            "Name"
+          ],
+          "category": "function",
+          "resourceName": "iwiddevopsrbb653ee50b653ee50bPostConfirmation",
+          "triggerProvider": "Cognito"
+        }
+      ],
       "frontendAuthConfig": {
         "mfaConfiguration": "OFF",
         "mfaTypes": [
@@ -37,10 +47,14 @@
           "passwordPolicyMinLength": 8
         },
         "signupAttributes": [
-          "EMAIL"
+          "EMAIL",
+          "FAMILY_NAME",
+          "NAME"
         ],
         "socialProviders": [],
-        "usernameAttributes": [],
+        "usernameAttributes": [
+          "EMAIL"
+        ],
         "verificationMechanisms": [
           "EMAIL"
         ]
@@ -58,6 +72,31 @@
     },
     "insertUser": {
       "build": true,
+      "dependsOn": [
+        {
+          "attributes": [
+            "Name",
+            "Arn",
+            "StreamArn"
+          ],
+          "category": "storage",
+          "resourceName": "users"
+        }
+      ],
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda"
+    },
+    "iwiddevopsrbb653ee50b653ee50bPostConfirmation": {
+      "build": true,
+      "dependsOn": [
+        {
+          "attributes": [
+            "Name"
+          ],
+          "category": "function",
+          "resourceName": "insertUser"
+        }
+      ],
       "providerPlugin": "awscloudformation",
       "service": "Lambda"
     }
@@ -92,6 +131,22 @@
         {
           "category": "function",
           "resourceName": "insertUser"
+        }
+      ]
+    },
+    "AMPLIFY_function_iwiddevopsrbb653ee50b653ee50bPostConfirmation_deploymentBucketName": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "iwiddevopsrbb653ee50b653ee50bPostConfirmation"
+        }
+      ]
+    },
+    "AMPLIFY_function_iwiddevopsrbb653ee50b653ee50bPostConfirmation_s3Key": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "iwiddevopsrbb653ee50b653ee50bPostConfirmation"
         }
       ]
     }
