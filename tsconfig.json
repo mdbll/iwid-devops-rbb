@@ -14,8 +14,9 @@
   "compilerOptions": {
     "module": "NodeNext",
     "types": ["pinia"],
-    "strict": false,
-    "noEmit": false,
-    "checkJs": false
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["src/*"]
+    }
   }
 }
