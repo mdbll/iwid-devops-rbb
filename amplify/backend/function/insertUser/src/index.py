@@ -1,7 +1,6 @@
 import os
 import boto3
 import json
-from dynamodb_json import json_util as dbjson
 
 def handler(event, context):
     dynamodb = boto3.resource('dynamodb')

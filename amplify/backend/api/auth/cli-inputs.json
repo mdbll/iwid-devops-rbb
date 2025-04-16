@@ -4,6 +4,7 @@
     "/getUser": {
       "name": "/getUser",
       "lambdaFunction": "getUser",
+      "cors": true,
       "permissions": {
         "setting": "private",
         "auth": ["read"]
