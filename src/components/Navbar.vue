@@ -10,7 +10,7 @@
         <div class="flex items-center gap-3 pr-4">
           <!-- Bouton Sign Out -->
           <button
-            @click="handleSignOut"
+            @click="onSignOut"
             class="text-sm px-3 py-1 rounded-md bg-red-500 text-white hover:bg-red-600 transition duration-200"
           >
             Se déconnecter
@@ -56,6 +56,11 @@
   
   const goToProfile = () => {
     router.push('/profile')
+  }
+
+  async function onSignOut() {
+    await handleSignOut()
+    router.push("/sign-in")
   }
   
   onMounted(async () => {
