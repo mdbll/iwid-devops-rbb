@@ -4,15 +4,17 @@ import SingUpView from "@/views/SingUpView.vue";
 import SignInView from "@/views/SignInView.vue";
 import SignUpSecondStep from "@/views/SignUpSecondStep.vue";
 import ProfileView from "@/views/ProfileView.vue";
+import { isAuthenticated } from "@/utils/auth";
+
 
 const publicRoutes = ["/sign-up", "/sign-in", "/verify"];
 
-function isAuthenticated() {
-  const tokenKey = Object.keys(localStorage).find((key) =>
-    /^CognitoIdentityServiceProvider\..*\.accessToken$/.test(key)
-  );
-  return !!(tokenKey && localStorage.getItem(tokenKey));
-}
+// function isAuthenticated() {
+//   const tokenKey = Object.keys(localStorage).find((key) =>
+//     /^CognitoIdentityServiceProvider\..*\.accessToken$/.test(key)
+//   );
+//   return !!(tokenKey && localStorage.getItem(tokenKey));
+// }
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
