@@ -27,6 +27,7 @@
             @change="handleFileChange"
             class="mb-4 hidden"
         />
+        
 
         <button
             @click="uploadImage"
