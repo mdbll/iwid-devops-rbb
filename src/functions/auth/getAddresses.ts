@@ -15,7 +15,7 @@ const getAddresses = async (): Promise<Address[] | null> => {
     const restOperation = get({
       apiName: "auth",
       path: "/getAddresses",
-    });
+    }); 
 
     const res = await restOperation.response;
 
