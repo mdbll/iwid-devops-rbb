@@ -335,12 +335,33 @@
           "resourceName": "insertUser"
         }
       ]
+    },
+    "AMPLIFY_function_iwiddevopsrbb653ee50b653ee50bPostConfirmation_deploymentBucketName": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "iwiddevopsrbb653ee50b653ee50bPostConfirmation"
+        }
+      ]
+    },
+    "AMPLIFY_function_iwiddevopsrbb653ee50b653ee50bPostConfirmation_s3Key": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "iwiddevopsrbb653ee50b653ee50bPostConfirmation"
+        }
+      ]
     }
   },
   "storage": {
     "addresses": {
       "providerPlugin": "awscloudformation",
       "service": "DynamoDB"
+    },
+    "profilePictures": {
+      "dependsOn": [],
+      "providerPlugin": "awscloudformation",
+      "service": "S3"
     },
     "films": {
       "providerPlugin": "awscloudformation",
