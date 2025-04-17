@@ -1,10 +1,14 @@
-<script setup lang="ts">
-import { RouterView } from "vue-router";
-</script>
-
 <template>
-  <RouterView />
+  <div>
+    <Navbar v-if="route.path === '/user'" />
+
+    <RouterView />
+  </div>
 </template>
 
-<style>
-</style>
+<script setup>
+import { RouterView, useRoute } from 'vue-router'
+import Navbar from './components/Navbar.vue'
+
+const route = useRoute()
+</script>
