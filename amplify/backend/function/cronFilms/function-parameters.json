@@ -1,0 +1,11 @@
+{
+  "permissions": {
+    "storage": {
+      "films": [
+        "create",
+        "read"
+      ]
+    }
+  },
+  "lambdaLayers": []
+}

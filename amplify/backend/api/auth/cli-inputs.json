@@ -4,10 +4,11 @@
     "/getUser": {
       "name": "/getUser",
       "lambdaFunction": "getUser",
-      "cors": true,
       "permissions": {
         "setting": "private",
-        "auth": ["read"]
+        "auth": [
+          "read"
+        ]
       }
     },
     "/insertUser": {
@@ -15,7 +16,49 @@
       "lambdaFunction": "insertUser",
       "permissions": {
         "setting": "private",
-        "auth": ["create"]
+        "auth": [
+          "create"
+        ]
+      }
+    },
+    "/insertAddress": {
+      "name": "/insertAddress",
+      "lambdaFunction": "insertAddress",
+      "permissions": {
+        "setting": "private",
+        "auth": [
+          "create"
+        ]
+      }
+    },
+    "/getAddresses": {
+      "name": "/getAddresses",
+      "lambdaFunction": "getAddresses",
+      "permissions": {
+        "setting": "private",
+        "auth": [
+          "read"
+        ]
+      }
+    },
+    "/deleteAddress": {
+      "name": "/deleteAddress",
+      "lambdaFunction": "deleteAddress",
+      "permissions": {
+        "setting": "private",
+        "auth": [
+          "create"
+        ]
+      }
+    },
+    "/getFilms": {
+      "name": "/getFilms",
+      "lambdaFunction": "getFilms",
+      "permissions": {
+        "setting": "private",
+        "auth": [
+          "read"
+        ]
       }
     }
   }

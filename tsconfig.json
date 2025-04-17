@@ -13,6 +13,10 @@
   ],
   "compilerOptions": {
     "module": "NodeNext",
-    "types": ["pinia"]
+    "types": ["pinia"],
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["src/*"]
+    }
   }
 }

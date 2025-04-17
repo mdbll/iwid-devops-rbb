@@ -17,6 +17,38 @@
           ],
           "category": "function",
           "resourceName": "insertUser"
+        },
+        {
+          "attributes": [
+            "Name",
+            "Arn"
+          ],
+          "category": "function",
+          "resourceName": "insertAddress"
+        },
+        {
+          "attributes": [
+            "Name",
+            "Arn"
+          ],
+          "category": "function",
+          "resourceName": "getAddresses"
+        },
+        {
+          "attributes": [
+            "Name",
+            "Arn"
+          ],
+          "category": "function",
+          "resourceName": "deleteAddress"
+        },
+        {
+          "attributes": [
+            "Name",
+            "Arn"
+          ],
+          "category": "function",
+          "resourceName": "getFilms"
         }
       ],
       "providerPlugin": "awscloudformation",
@@ -64,9 +96,99 @@
     }
   },
   "function": {
+    "cronFilms": {
+      "build": true,
+      "dependsOn": [
+        {
+          "attributes": [
+            "Name",
+            "Arn",
+            "StreamArn"
+          ],
+          "category": "storage",
+          "resourceName": "films"
+        }
+      ],
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda"
+    },
+    "deleteAddress": {
+      "build": true,
+      "dependsOn": [
+        {
+          "attributes": [
+            "Name",
+            "Arn",
+            "StreamArn"
+          ],
+          "category": "storage",
+          "resourceName": "addresses"
+        }
+      ],
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda"
+    },
+    "getAddresses": {
+      "build": true,
+      "dependsOn": [
+        {
+          "attributes": [
+            "Name",
+            "Arn",
+            "StreamArn"
+          ],
+          "category": "storage",
+          "resourceName": "addresses"
+        }
+      ],
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda"
+    },
+    "getFilms": {
+      "build": true,
+      "dependsOn": [
+        {
+          "attributes": [
+            "Name",
+            "Arn",
+            "StreamArn"
+          ],
+          "category": "storage",
+          "resourceName": "films"
+        }
+      ],
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda"
+    },
     "getUser": {
       "build": true,
-      "dependsOn": [],
+      "dependsOn": [
+        {
+          "attributes": [
+            "Name",
+            "Arn",
+            "StreamArn"
+          ],
+          "category": "storage",
+          "resourceName": "users"
+        }
+      ],
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda"
+    },
+    "insertAddress": {
+      "build": true,
+      "dependsOn": [
+        {
+          "attributes": [
+            "Name",
+            "Arn",
+            "StreamArn"
+          ],
+          "category": "storage",
+          "resourceName": "addresses"
+        }
+      ],
       "providerPlugin": "awscloudformation",
       "service": "Lambda"
     },
@@ -102,6 +224,70 @@
     }
   },
   "parameters": {
+    "AMPLIFY_function_cronFilms_deploymentBucketName": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "cronFilms"
+        }
+      ]
+    },
+    "AMPLIFY_function_cronFilms_s3Key": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "cronFilms"
+        }
+      ]
+    },
+    "AMPLIFY_function_deleteAddress_deploymentBucketName": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "deleteAddress"
+        }
+      ]
+    },
+    "AMPLIFY_function_deleteAddress_s3Key": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "deleteAddress"
+        }
+      ]
+    },
+    "AMPLIFY_function_getAddresses_deploymentBucketName": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "getAddresses"
+        }
+      ]
+    },
+    "AMPLIFY_function_getAddresses_s3Key": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "getAddresses"
+        }
+      ]
+    },
+    "AMPLIFY_function_getFilms_deploymentBucketName": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "getFilms"
+        }
+      ]
+    },
+    "AMPLIFY_function_getFilms_s3Key": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "getFilms"
+        }
+      ]
+    },
     "AMPLIFY_function_getUser_deploymentBucketName": {
       "usedBy": [
         {
@@ -115,6 +301,22 @@
         {
           "category": "function",
           "resourceName": "getUser"
+        }
+      ]
+    },
+    "AMPLIFY_function_insertAddress_deploymentBucketName": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "insertAddress"
+        }
+      ]
+    },
+    "AMPLIFY_function_insertAddress_s3Key": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "insertAddress"
         }
       ]
     },
@@ -152,6 +354,19 @@
     }
   },
   "storage": {
+    "addresses": {
+      "providerPlugin": "awscloudformation",
+      "service": "DynamoDB"
+    },
+    "films": {
+      "providerPlugin": "awscloudformation",
+      "service": "DynamoDB"
+    },
+    "profilePictures": {
+      "dependsOn": [],
+      "providerPlugin": "awscloudformation",
+      "service": "S3"
+    },
     "users": {
       "providerPlugin": "awscloudformation",
       "service": "DynamoDB"
