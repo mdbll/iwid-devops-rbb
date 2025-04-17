@@ -17,7 +17,7 @@ const handleSignIn = async ({ username, password }: SignInInput) => {
       nextStep: nextStep.signInStep,
       username,
     });
-    if (isSignedIn) router.push({ path: "/user" });
+    if (isSignedIn) router.push({ path: "/" });
   } catch (error) {
     console.log("error signing in", error);
   }
