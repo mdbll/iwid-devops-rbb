@@ -1,0 +1,10 @@
+{
+  "resourceName": "films",
+  "tableName": "films",
+  "partitionKey": {
+    "fieldName": "id",
+    "fieldType": "string"
+  },
+  "gsi": [],
+  "triggerFunctions": []
+}

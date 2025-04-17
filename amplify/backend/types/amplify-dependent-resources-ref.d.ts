@@ -18,6 +18,14 @@ export type AmplifyDependentResourcesAttributes = {
     }
   },
   "function": {
+    "cronFilms": {
+      "Arn": "string",
+      "CloudWatchEventRule": "string",
+      "LambdaExecutionRole": "string",
+      "LambdaExecutionRoleArn": "string",
+      "Name": "string",
+      "Region": "string"
+    },
     "deleteAddress": {
       "Arn": "string",
       "LambdaExecutionRole": "string",
@@ -26,6 +34,13 @@ export type AmplifyDependentResourcesAttributes = {
       "Region": "string"
     },
     "getAddresses": {
+      "Arn": "string",
+      "LambdaExecutionRole": "string",
+      "LambdaExecutionRoleArn": "string",
+      "Name": "string",
+      "Region": "string"
+    },
+    "getFilms": {
       "Arn": "string",
       "LambdaExecutionRole": "string",
       "LambdaExecutionRoleArn": "string",
@@ -73,6 +88,14 @@ export type AmplifyDependentResourcesAttributes = {
     "profilePictures": {
       "BucketName": "string",
       "Region": "string"
+    },
+    "films": {
+      "Arn": "string",
+      "Name": "string",
+      "PartitionKeyName": "string",
+      "PartitionKeyType": "string",
+      "Region": "string",
+      "StreamArn": "string"
     },
     "users": {
       "Arn": "string",
