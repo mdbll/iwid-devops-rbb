@@ -1,7 +1,6 @@
 import os
 import boto3
 import json
-from dynamodb_json import json_util as dbjson
 from boto3.dynamodb.conditions import Key
 
 def handler(event, context):
