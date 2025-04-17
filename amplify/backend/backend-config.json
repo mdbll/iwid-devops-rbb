@@ -362,6 +362,11 @@
       "providerPlugin": "awscloudformation",
       "service": "DynamoDB"
     },
+    "profilePictures": {
+      "dependsOn": [],
+      "providerPlugin": "awscloudformation",
+      "service": "S3"
+    },
     "users": {
       "providerPlugin": "awscloudformation",
       "service": "DynamoDB"
