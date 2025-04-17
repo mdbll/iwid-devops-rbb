@@ -2,22 +2,21 @@ import os
 import boto3
 import json
 from boto3.dynamodb.conditions import Key
+from boto3.dynamodb.types import TypeDeserializer
 
 def handler(event, context):
   print('Table name')
-  print(os.environ["STORAGE_USERS_NAME"])
+  print(os.environ["STORAGE_FILMS_NAME"])
   
-  dynamodb = boto3.resource('dynamodb')
-  dbtable = dynamodb.Table(os.environ["STORAGE_USERS_NAME"])
+  dynamodb = boto3.resource('dynamodb', region_name='eu-west-1')
+  dbtable = dynamodb.Table(os.environ["STORAGE_FILMS_NAME"])
   
   try:
-    id = event.get("requestContext", {}).get("identity", {}).get("cognitoAuthenticationProvider", "").split(':')[-1]
-    res = dbtable.query( 
-        KeyConditionExpression=Key('id').eq(id)
-        )
-    
-    item = res['Items']
-    print(item)
+    res = dbtable.scan()
+    items = res.get('Items', [])
+
+    print('Items')
+    print(items)
 
     return {
         'statusCode': 200,
@@ -26,7 +25,7 @@ def handler(event, context):
             'Access-Control-Allow-Origin': '*',
             'Access-Control-Allow-Methods': 'OPTIONS,POST,GET'
         },
-        'body': json.dumps({'message': 'Item crawled', 'item': item})
+        'body': json.dumps({'message': 'Items crawled', 'items': items})
     }
   except Exception as e:
     print('500')

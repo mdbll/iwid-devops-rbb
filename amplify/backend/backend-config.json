@@ -41,6 +41,14 @@
           ],
           "category": "function",
           "resourceName": "deleteAddress"
+        },
+        {
+          "attributes": [
+            "Name",
+            "Arn"
+          ],
+          "category": "function",
+          "resourceName": "getFilms"
         }
       ],
       "providerPlugin": "awscloudformation",
@@ -88,6 +96,22 @@
     }
   },
   "function": {
+    "cronFilms": {
+      "build": true,
+      "dependsOn": [
+        {
+          "attributes": [
+            "Name",
+            "Arn",
+            "StreamArn"
+          ],
+          "category": "storage",
+          "resourceName": "films"
+        }
+      ],
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda"
+    },
     "deleteAddress": {
       "build": true,
       "dependsOn": [
@@ -115,6 +139,22 @@
           ],
           "category": "storage",
           "resourceName": "addresses"
+        }
+      ],
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda"
+    },
+    "getFilms": {
+      "build": true,
+      "dependsOn": [
+        {
+          "attributes": [
+            "Name",
+            "Arn",
+            "StreamArn"
+          ],
+          "category": "storage",
+          "resourceName": "films"
         }
       ],
       "providerPlugin": "awscloudformation",
@@ -184,6 +224,22 @@
     }
   },
   "parameters": {
+    "AMPLIFY_function_cronFilms_deploymentBucketName": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "cronFilms"
+        }
+      ]
+    },
+    "AMPLIFY_function_cronFilms_s3Key": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "cronFilms"
+        }
+      ]
+    },
     "AMPLIFY_function_deleteAddress_deploymentBucketName": {
       "usedBy": [
         {
@@ -213,6 +269,22 @@
         {
           "category": "function",
           "resourceName": "getAddresses"
+        }
+      ]
+    },
+    "AMPLIFY_function_getFilms_deploymentBucketName": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "getFilms"
+        }
+      ]
+    },
+    "AMPLIFY_function_getFilms_s3Key": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "getFilms"
         }
       ]
     },
@@ -267,6 +339,10 @@
   },
   "storage": {
     "addresses": {
+      "providerPlugin": "awscloudformation",
+      "service": "DynamoDB"
+    },
+    "films": {
       "providerPlugin": "awscloudformation",
       "service": "DynamoDB"
     },
