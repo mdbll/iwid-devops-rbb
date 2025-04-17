@@ -2,7 +2,8 @@
   "permissions": {
     "storage": {
       "films": [
-        "create"
+        "create",
+        "read"
       ]
     }
   },
