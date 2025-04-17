@@ -5,20 +5,36 @@
       <!-- Bloc Image -->
       <div class="w-full lg:w-1/2 p-8 flex flex-col items-center justify-center bg-gray-50">
         <h2 class="text-xl font-semibold mb-4 text-gray-700">Photo de profil</h2>
+
+        <!-- Loader pendant le chargement -->
+        <div v-if="isLoadingImage" class="w-40 h-40 flex items-center justify-center mb-4">
+          <div class="animate-spin h-8 w-8 border-4 border-gray-400 border-t-transparent rounded-full"></div>
+        </div>
+
+        <!-- Image -->
         <img
-            v-if="imageUrl"
+            v-if="!isLoadingImage && imageUrl"
             :src="imageUrl"
             alt="Image de profil"
-            class="mb-4 w-40 h-40 rounded-full object-cover border border-gray-300"
+            class="mb-4 w-40 h-40 rounded-full object-cover border border-gray-300 cursor-pointer"
+            @click="triggerFileInput"
         />
-        <input type="file" @change="handleFileChange" class="mb-4" />
+
+        <!-- Input file caché -->
+        <input
+            type="file"
+            ref="fileInput"
+            @change="handleFileChange"
+            class="mb-4 hidden"
+        />
+
         <button
             @click="uploadImage"
-            class="rounded-full px-6 py-2 font-medium bg-primary-600 hover:text-black hover:bg-primary-700 transition-all"
+            class="rounded-full px-6 py-2 font-medium bg-primary-600 text-black hover:bg-primary-700 hover:text-black transition-all"
             :disabled="isUploading"
         >
           <span v-if="isUploading">📤 Upload...</span>
-          <span v-else>Uploader</span>
+          <span v-else>Charger l'image</span>
         </button>
         <p v-if="message" class="mt-2 text-green-600 text-sm">{{ message }}</p>
       </div>
@@ -46,7 +62,7 @@
             />
             <button
                 type="submit"
-                class="rounded-md px-6 py-2 font-medium bg-primary-600 hover:text-black hover:bg-primary-700 transition-all"
+                class="rounded-md px-6 py-2 font-medium bg-primary-600 text-black hover:bg-primary-700 hover:text-black transition-all"
                 :disabled="isSubmitting"
             >
               <span v-if="isSubmitting">⏳</span>
@@ -107,9 +123,17 @@ const message = ref("");
 const isUploading = ref(false);
 const isSubmitting = ref(false);
 const loadingDeleteIndex = ref(null);
+const isLoadingImage = ref(true);
+const fileInput = ref(null);
+
+// Déclencher le champ file au clic sur l’image
+const triggerFileInput = () => {
+  fileInput.value?.click();
+};
 
 // Charger image existante
 const loadImageIfExists = async () => {
+  isLoadingImage.value = true;
   try {
     const user = await getCurrentUser();
     const fileName = `profile-pictures/${user.username}.jpg`;
@@ -117,6 +141,8 @@ const loadImageIfExists = async () => {
     imageUrl.value = url.href;
   } catch (err) {
     console.log("Aucune image de profil trouvée.");
+  } finally {
+    isLoadingImage.value = false;
   }
 };
 
@@ -125,6 +151,7 @@ const handleFileChange = (event) => {
   file.value = event.target.files[0];
 };
 
+// Upload
 const uploadImage = async () => {
   if (!file.value) {
     message.value = "Aucun fichier sélectionné.";
@@ -203,7 +230,6 @@ const deleteAddressWithLoading = async (id, index) => {
 </script>
 
 <style scoped>
-/* Loader animation */
 @keyframes spin {
   0% {
     transform: rotate(0deg);

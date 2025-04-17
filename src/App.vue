@@ -1,7 +1,6 @@
 <template>
-  <div>
+  <div class="bg-white text-black min-h-screen">
     <Navbar v-if="showNavbar" />
-
     <RouterView />
   </div>
 </template>
