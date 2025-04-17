@@ -71,6 +71,7 @@ const onSubmit = async () => {
       familyName: name.value,
   };
     await handleSignUp(data);
+    router.push({ name: 'verify' });
 };
 
 </script>

@@ -4,6 +4,7 @@ import SingUpView from "@/views/SingUpView.vue";
 import SignInView from "@/views/SignInView.vue";
 import { useSignUpStore } from "@/stores/signUpStore";
 import UserView from "@/views/UserView.vue";
+import SignUpSecondStep from "@/views/SignUpSecondStep.vue";
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -28,6 +29,11 @@ const router = createRouter({
       name: "user",
       component: UserView,
     },
+    {
+      path: '/verify',
+      name: 'verify',
+      component: SignUpSecondStep,
+    }
   ],
 });
 
