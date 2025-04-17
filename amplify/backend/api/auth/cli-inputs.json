@@ -50,6 +50,16 @@
           "create"
         ]
       }
+    },
+    "/getFilms": {
+      "name": "/getFilms",
+      "lambdaFunction": "getFilms",
+      "permissions": {
+        "setting": "private",
+        "auth": [
+          "read"
+        ]
+      }
     }
   }
 }
