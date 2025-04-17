@@ -3,7 +3,7 @@
       class="px-6 h-screen py-20 md:px-12 lg:px-20 flex items-center justify-center bg-[linear-gradient(-225deg,var(--p-primary-500),var(--p-primary-700)_48%,var(--p-primary-800))] dark:bg-[linear-gradient(-225deg,var(--p-primary-400),var(--p-primary-600)_48%,var(--p-primary-800))]"
   >
       <div class="p-12 shadow text-center lg:w-[30rem] backdrop-blur-md rounded-xl bg-[rgba(255,255,255,0.1)]">
-          <div class="text-4xl font-medium mb-12 text-primary-contrast">Bienvenue</div>
+          <div class="text-4xl font-medium mb-12 text-primary-contrast">Confirmez l'email</div>
           <InputOtp v-model="otp" :length="6" :integerOnly="true" class="! mb-12"/>
           <button
           @click="onSubmit"
