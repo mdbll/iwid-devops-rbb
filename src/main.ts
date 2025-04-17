@@ -10,6 +10,7 @@ import { Amplify } from "aws-amplify";
 import config from "./amplifyconfiguration.json";
 import PrimeVue from 'primevue/config';
 import Aura from '@primeuix/themes/aura';
+import 'primeicons/primeicons.css'
 
 const app = createApp(App);
 
