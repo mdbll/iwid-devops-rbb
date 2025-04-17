@@ -358,14 +358,14 @@
       "providerPlugin": "awscloudformation",
       "service": "DynamoDB"
     },
+    "films": {
+      "providerPlugin": "awscloudformation",
+      "service": "DynamoDB"
+    },
     "profilePictures": {
       "dependsOn": [],
       "providerPlugin": "awscloudformation",
       "service": "S3"
-    },
-    "films": {
-      "providerPlugin": "awscloudformation",
-      "service": "DynamoDB"
     },
     "users": {
       "providerPlugin": "awscloudformation",

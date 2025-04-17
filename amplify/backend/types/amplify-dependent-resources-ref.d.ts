@@ -85,10 +85,6 @@ export type AmplifyDependentResourcesAttributes = {
       "Region": "string",
       "StreamArn": "string"
     },
-    "profilePictures": {
-      "BucketName": "string",
-      "Region": "string"
-    },
     "films": {
       "Arn": "string",
       "Name": "string",
@@ -96,6 +92,10 @@ export type AmplifyDependentResourcesAttributes = {
       "PartitionKeyType": "string",
       "Region": "string",
       "StreamArn": "string"
+    },
+    "profilePictures": {
+      "BucketName": "string",
+      "Region": "string"
     },
     "users": {
       "Arn": "string",
